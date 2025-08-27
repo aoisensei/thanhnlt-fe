@@ -1,11 +1,6 @@
 import { Button, Card, CardActions, CardContent, Stack, Typography } from '@mui/material'
 import { useState } from 'react'
 import { demoApi } from '../api/demoApi.ts'
-import { Hero } from '../components/landing/Hero.tsx'
-import { Features } from '../components/landing/Features.tsx'
-import { About } from '../components/landing/About.tsx'
-import { SocialLinks } from '../components/landing/SocialLinks.tsx'
-import { Footer } from '../components/landing/Footer.tsx'
 
 export function HomePage() {
   const [message, setMessage] = useState<string>('')
@@ -17,11 +12,6 @@ export function HomePage() {
 
   return (
     <Stack spacing={2}>
-      <Hero />
-      <About />
-      <Features />
-      <SocialLinks />
-
       <Card>
         <CardContent>
           <Typography gutterBottom variant="h5">Welcome</Typography>
@@ -34,7 +24,6 @@ export function HomePage() {
           <Button variant="contained" onClick={handleFetch}>Call Demo API</Button>
         </CardActions>
       </Card>
-      <Footer />
     </Stack>
   )
 }

@@ -9,6 +9,7 @@ COPY package.json pnpm-lock.yaml .npmrc* ./*.cjs* ./*.js* ./*.json ./*.ts* ./
 COPY tsconfig*.json vite.config.ts ./
 COPY src ./src
 COPY public ./public
+COPY index.html ./
 
 RUN pnpm install --frozen-lockfile
 RUN pnpm build
