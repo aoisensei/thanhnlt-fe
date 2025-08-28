@@ -2,19 +2,19 @@ import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Stack, Ty
 import { motion } from 'framer-motion'
 import { GitHub, Launch, Code, Storage, Cloud } from '@mui/icons-material'
 import { useTheme } from '../../hooks/useTheme'
+import reactLogo from '../../assets/react.svg'
 
 export function Projects() {
   const { colors } = useTheme()
   const muiTheme = useMuiTheme()
   const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'))
-  const isTablet = useMediaQuery(muiTheme.breakpoints.down('md'))
 
   const projects = [
     {
       id: 1,
       title: 'E-Commerce Platform',
       description: 'A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include user authentication, product management, payment integration, and admin dashboard.',
-      image: '/src/assets/react.svg',
+      image: reactLogo,
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       github: 'https://github.com/example/ecommerce',
       live: 'https://ecommerce-demo.com',
@@ -25,7 +25,7 @@ export function Projects() {
       id: 2,
       title: 'Cloud Management Dashboard',
       description: 'A comprehensive cloud infrastructure management tool supporting AWS, Azure, and Google Cloud. Provides monitoring, cost analysis, and resource optimization.',
-      image: '/src/assets/react.svg',
+      image: reactLogo,
       technologies: ['React', 'TypeScript', 'AWS SDK', 'Azure API'],
       github: 'https://github.com/example/cloud-dashboard',
       live: 'https://cloud-dashboard-demo.com',
@@ -36,7 +36,7 @@ export function Projects() {
       id: 3,
       title: 'Data Analytics Platform',
       description: 'Real-time data visualization and analytics platform with interactive charts, data processing pipelines, and customizable dashboards for business intelligence.',
-      image: '/src/assets/react.svg',
+      image: reactLogo,
       technologies: ['React', 'D3.js', 'Python', 'PostgreSQL'],
       github: 'https://github.com/example/analytics',
       live: 'https://analytics-demo.com',
@@ -47,7 +47,7 @@ export function Projects() {
       id: 4,
       title: 'Task Management App',
       description: 'A collaborative task management application with real-time updates, team collaboration features, and advanced project tracking capabilities.',
-      image: '/src/assets/react.svg',
+      image: reactLogo,
       technologies: ['React', 'Firebase', 'Material-UI', 'Redux'],
       github: 'https://github.com/example/task-manager',
       live: 'https://task-manager-demo.com',

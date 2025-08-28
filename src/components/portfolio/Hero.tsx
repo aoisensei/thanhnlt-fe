@@ -2,6 +2,7 @@ import { Box, Button, Stack, Typography, useMediaQuery, useTheme as useMuiTheme 
 import { motion } from 'framer-motion'
 import { Download, Mail } from '@mui/icons-material'
 import { useTheme } from '../../hooks/useTheme'
+import avatarLogo from '../../assets/avatar.jpg'
 
 export function Hero() {
   const { colors } = useTheme()
@@ -131,7 +132,7 @@ export function Hero() {
               }}
             >
               <img
-                src="/src/assets/thanhnlt-high-resolution-logo.png"
+                src={avatarLogo}
                 alt="Avatar"
                 style={{
                   width: '100%',

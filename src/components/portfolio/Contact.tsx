@@ -8,7 +8,6 @@ export function Contact() {
   const { colors } = useTheme()
   const muiTheme = useMuiTheme()
   const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'))
-  const isTablet = useMediaQuery(muiTheme.breakpoints.down('md'))
 
   const [formData, setFormData] = useState({
     name: '',

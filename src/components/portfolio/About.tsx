@@ -1,13 +1,10 @@
-import { Box, Grid, Stack, Typography, useMediaQuery, useTheme as useMuiTheme } from '@mui/material'
+import { Box, Grid, Stack, Typography } from '@mui/material'
 import { motion } from 'framer-motion'
 import { Person, Email, LocationOn, Cake } from '@mui/icons-material'
 import { useTheme } from '../../hooks/useTheme'
 
 export function About() {
   const { colors } = useTheme()
-  const muiTheme = useMuiTheme()
-  const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'))
-  const isTablet = useMediaQuery(muiTheme.breakpoints.down('md'))
 
   const personalInfo = [
     { icon: <Person />, label: 'Name', value: 'Thanh NLT' },

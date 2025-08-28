@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, useMediaQuery, useTheme as useMuiTheme } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import { motion } from 'framer-motion'
 import {
   Code,
@@ -11,15 +11,12 @@ import {
   Brush,
   Build,
 } from '@mui/icons-material'
-import DockerLogo from '../../assets/docker-svgrepo-com.svg'
+import DockerLogo from '../../assets/docker.svg'
 import ReactLogo from '../../assets/react.svg'
 import { useTheme } from '../../hooks/useTheme'
 
 export function Skills() {
   const { colors } = useTheme()
-  const muiTheme = useMuiTheme()
-  const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'))
-  const isTablet = useMediaQuery(muiTheme.breakpoints.down('md'))
 
   const skills = [
     { name: 'React', icon: <img src={ReactLogo} alt="React" width={40} />, category: 'Frontend', color: '#61dafb' },
