@@ -1,30 +1,14 @@
-import { Button, Card, CardActions, CardContent, Stack, Typography } from '@mui/material'
-import { useState } from 'react'
-import { demoApi } from '../api/demoApi.ts'
+import { Hero, About, Skills, Projects, Contact } from '../components/portfolio'
 
 export function HomePage() {
-  const [message, setMessage] = useState<string>('')
-
-  const handleFetch = async () => {
-    const res = await demoApi.getHello()
-    setMessage(res.message)
-  }
-
   return (
-    <Stack spacing={2}>
-      <Card>
-        <CardContent>
-          <Typography gutterBottom variant="h5">Welcome</Typography>
-          <Typography color="text.secondary">This is a base project with MUI + Tailwind + Router + Zustand.</Typography>
-          {message && (
-            <Typography sx={{ mt: 2 }} color="success.main">API says: {message}</Typography>
-          )}
-        </CardContent>
-        <CardActions>
-          <Button variant="contained" onClick={handleFetch}>Call Demo API</Button>
-        </CardActions>
-      </Card>
-    </Stack>
+    <>
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+    </>
   )
 }
 
