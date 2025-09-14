@@ -4,7 +4,6 @@ import Brightness7Icon from '@mui/icons-material/Brightness7'
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import WorkOutlineRoundedIcon from '@mui/icons-material/WorkOutlineRounded'
 import ContactMailRoundedIcon from '@mui/icons-material/ContactMailRounded'
-import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
 import { Link as RouterLink } from 'react-router-dom'
 import logo from '../assets/thanhnlt-high-resolution-logo.png'
@@ -16,7 +15,7 @@ export function Navbar() {
     const { mode, toggle } = useThemeMode()
     const theme = useTheme()
     const isLight = theme.palette.mode === 'light'
-    const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
+    const isSmall = useMediaQuery(theme.breakpoints.down('md'))
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
     const menuOpen = Boolean(anchorEl)
 
@@ -58,7 +57,82 @@ export function Navbar() {
                     </Box>
 
                     <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-                        {isSmall ? (
+                        {/* Desktop Menu - Show individual buttons */}
+                        {!isSmall && (
+                            <>
+                                <Button
+                                    component={RouterLink}
+                                    to="/"
+                                    color={isLight ? 'inherit' : 'inherit'}
+                                    startIcon={<HomeRoundedIcon />}
+                                    sx={{
+                                        color: isLight ? 'text.primary' : 'inherit',
+                                        textTransform: 'none',
+                                        fontWeight: 600,
+                                        fontSize: '1rem',
+                                        px: 2,
+                                        py: 1,
+                                        borderRadius: 1,
+                                        '&:hover': { bgcolor: 'action.hover' },
+                                    }}
+                                >
+                                    Home
+                                </Button>
+                                <Button
+                                    component={RouterLink}
+                                    to="/work"
+                                    color={isLight ? 'inherit' : 'inherit'}
+                                    startIcon={<WorkOutlineRoundedIcon />}
+                                    sx={{
+                                        color: isLight ? 'text.primary' : 'inherit',
+                                        textTransform: 'none',
+                                        fontWeight: 600,
+                                        fontSize: '1rem',
+                                        px: 2,
+                                        py: 1,
+                                        borderRadius: 1,
+                                        '&:hover': { bgcolor: 'action.hover' },
+                                    }}
+                                >
+                                    Work
+                                </Button>
+                                <Button
+                                    component={RouterLink}
+                                    to="/contact"
+                                    color={isLight ? 'inherit' : 'inherit'}
+                                    startIcon={<ContactMailRoundedIcon />}
+                                    sx={{
+                                        color: isLight ? 'text.primary' : 'inherit',
+                                        textTransform: 'none',
+                                        fontWeight: 600,
+                                        fontSize: '1rem',
+                                        px: 2,
+                                        py: 1,
+                                        borderRadius: 1,
+                                        '&:hover': { bgcolor: 'action.hover' },
+                                    }}
+                                >
+                                    Contact
+                                </Button>
+                            </>
+                        )}
+
+                        {/* Theme Toggle Button - Always visible */}
+                        <IconButton
+                            color={isLight ? 'default' : 'inherit'}
+                            aria-label="toggle theme"
+                            onClick={toggle}
+                            sx={{ 
+                                '&:hover': { bgcolor: 'action.hover' }, 
+                                color: isLight ? 'text.primary' : 'inherit',
+                                ml: isSmall ? 0 : 1
+                            }}
+                        >
+                            {mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+                        </IconButton>
+
+                        {/* Mobile Menu Button */}
+                        {isSmall && (
                             <IconButton
                                 color={isLight ? 'default' : 'inherit'}
                                 aria-label="open menu"
@@ -67,61 +141,40 @@ export function Navbar() {
                             >
                                 <MenuRoundedIcon />
                             </IconButton>
-                        ) : (
-                            <Button
-                                color={isLight ? 'inherit' : 'inherit'}
-                                endIcon={<ExpandMoreRoundedIcon />}
-                                onClick={handleOpenMenu}
-                                sx={{
-                                    color: isLight ? 'text.primary' : 'inherit',
-                                    textTransform: 'none',
-                                    fontWeight: 700,
-                                    fontSize: '1.05rem',
-                                    px: 2.5,
-                                    py: 1,
-                                    borderRadius: 1,
-                                    '&:hover': { bgcolor: 'action.hover' },
-                                }}
-                            >
-                                Menu
-                            </Button>
                         )}
 
-                        <Menu
-                            anchorEl={anchorEl}
-                            open={menuOpen}
-                            onClose={handleCloseMenu}
-                            TransitionComponent={Fade}
-                            TransitionProps={{ timeout: 180 }}
-                            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-                            PaperProps={{ sx: { mt: 1, minWidth: 180, borderRadius: 1.5 } }}
-                        >
-                            <MenuItem component={RouterLink} to="/" onClick={handleCloseMenu}>
-                                <ListItemIcon>
-                                    <HomeRoundedIcon fontSize="small" />
-                                </ListItemIcon>
-                                <ListItemText primary="Home" />
-                            </MenuItem>
-                            <MenuItem component={RouterLink} to="/work" onClick={handleCloseMenu}>
-                                <ListItemIcon>
-                                    <WorkOutlineRoundedIcon fontSize="small" />
-                                </ListItemIcon>
-                                <ListItemText primary="Work" />
-                            </MenuItem>
-                            <MenuItem component={RouterLink} to="/contact" onClick={handleCloseMenu}>
-                                <ListItemIcon>
-                                    <ContactMailRoundedIcon fontSize="small" />
-                                </ListItemIcon>
-                                <ListItemText primary="Contact" />
-                            </MenuItem>
-                            <MenuItem onClick={() => { handleCloseMenu(); toggle(); }}>
-                                <ListItemIcon>
-                                    {mode === 'light' ? <Brightness4Icon fontSize="small" /> : <Brightness7Icon fontSize="small" />}
-                                </ListItemIcon>
-                                <ListItemText primary="Toggle theme" />
-                            </MenuItem>
-                        </Menu>
+                        {/* Mobile Menu Dropdown */}
+                        {isSmall && (
+                            <Menu
+                                anchorEl={anchorEl}
+                                open={menuOpen}
+                                onClose={handleCloseMenu}
+                                TransitionComponent={Fade}
+                                TransitionProps={{ timeout: 180 }}
+                                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                                PaperProps={{ sx: { mt: 1, minWidth: 180, borderRadius: 1.5 } }}
+                            >
+                                <MenuItem component={RouterLink} to="/" onClick={handleCloseMenu}>
+                                    <ListItemIcon>
+                                        <HomeRoundedIcon fontSize="small" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Home" />
+                                </MenuItem>
+                                <MenuItem component={RouterLink} to="/work" onClick={handleCloseMenu}>
+                                    <ListItemIcon>
+                                        <WorkOutlineRoundedIcon fontSize="small" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Work" />
+                                </MenuItem>
+                                <MenuItem component={RouterLink} to="/contact" onClick={handleCloseMenu}>
+                                    <ListItemIcon>
+                                        <ContactMailRoundedIcon fontSize="small" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Contact" />
+                                </MenuItem>
+                            </Menu>
+                        )}
                     </Box>
                 </Toolbar>
             </Box>
